@@ -4,7 +4,7 @@ resource "aws_instance" "web" {
   instance_type = "t3.micro"
   subnet_id     = aws_subnet.public.id
   security_groups = [aws_security_group.web_sg.id]
-  key_name      = "devops_keypair"
+  key_name      = "aws-devops-keypair"
 
   tags = {
     Name = "Terraform-EC2"
