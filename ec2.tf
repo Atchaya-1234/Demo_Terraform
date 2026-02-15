@@ -1,4 +1,5 @@
 
+# To create Ec2 instance
 resource "aws_instance" "web" {
   ami           = "ami-0317b0f0a0144b137" # Amazon Linux 2 AMI (update per region)
   instance_type = "t3.micro"
