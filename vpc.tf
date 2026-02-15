@@ -1,21 +1,22 @@
 
+# To create VPC
 resource "aws_vpc" "main" {
   cidr_block           = "10.0.0.0/16"
   enable_dns_support   = true
   enable_dns_hostnames = true
 }
-
+# To create subnet
 resource "aws_subnet" "public" {
   vpc_id                  = aws_vpc.main.id
   cidr_block              = "10.0.1.0/24"
   availability_zone       = "ap-south-1a"
   map_public_ip_on_launch = true
 }
-
+# To create internet gateway
 resource "aws_internet_gateway" "gw" {
   vpc_id = aws_vpc.main.id
 }
-
+# To create route table
 resource "aws_route_table" "public" {
   vpc_id = aws_vpc.main.id
 }
@@ -30,7 +31,7 @@ resource "aws_route_table_association" "public_assoc" {
   subnet_id      = aws_subnet.public.id
   route_table_id = aws_route_table.public.id
 }
-
+# To create security group
 resource "aws_security_group" "web_sg" {
   vpc_id = aws_vpc.main.id
 
